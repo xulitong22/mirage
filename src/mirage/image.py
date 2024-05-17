@@ -49,6 +49,11 @@ class Image(Generic[T]):
     _mode: T
 
     def __getitem__(self, key: int) -> "Image[Grayscale]":
+    
+        '''This method allows for indexing and accessing specific channels 
+        of the image. When accessing a specific channel, the method returns 
+        a new image containing only that channel.'''
+        
         if key < 0:
             key = self._mode.channels + key
         assert 0 <= key <= self._mode.channels, f"key {key} out of bounds"
